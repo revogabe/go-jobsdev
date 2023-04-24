@@ -1,6 +1,10 @@
-package main
+package schemas
 
-import "gorm.io/gorm"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Jobs struct {
   gorm.Model
@@ -15,4 +19,23 @@ type Jobs struct {
 	Experience string
 	Salary string
 	Link string
+}
+
+type JobsResponse struct {
+	ID uint `json:"id"`
+	
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
+	DeletedAt time.Time `json:"deletedAt,omitempty"`
+ 
+	Title string `json:"title"`
+	Description string `json:"description"`
+ 
+	Role string  `json:"role"`
+	Company string `json:"company"`
+	Location string `json:"location"`
+	Remote bool `json:"remote"`
+	Experience string `json:"experience"`
+	Salary string `json:"salary"`
+	Link string `json:"link"`
 }
