@@ -14,14 +14,10 @@ func main() {
 	logger = *config.GetLogger("main")
 
 	// Initialize godotenv
-	err := godotenv.Load() 
-	if err != nil { 
-		logger.Errorf("Error loading .env file: %v", err)
-		return
-	}
+	godotenv.Load() 
 
 	// Initialize Configs
-	err = config.Init()
+	err := config.Init()
 	if err != nil {
 		logger.Errorf("Error initializing configs: %v", err)
 		return 
