@@ -18,7 +18,7 @@ import (
 // @Success 200 {object} CreateJobsRequest
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /opening [post]
+// @Router /create [post]
 
 func CreateJobsHandler(ctx *gin.Context) {
 	request := CreateJobsRequest{}
