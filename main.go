@@ -1,8 +1,6 @@
 package main
 
 import (
-	"log"
-
 	"github.com/joho/godotenv"
 	"github.com/revogabe/go-jobsdev/config"
 	"github.com/revogabe/go-jobsdev/router"
@@ -16,10 +14,11 @@ func main() {
 	logger = *config.GetLogger("main")
 
 	// Initialize godotenv
-	err := godotenv.Load()
-  if err != nil {
-    log.Fatal("Error loading .env file")
-  }
+	err := godotenv.Load() 
+	if err != nil { 
+		logger.Errorf("Error loading .env file: %v", err)
+		return
+	}
 
 	// Initialize Configs
 	err = config.Init()
