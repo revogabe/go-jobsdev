@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/revogabe/go-jobsdev/schemas"
@@ -10,16 +11,11 @@ import (
 func ApprovedJobsHandler(ctx *gin.Context) {
 	request := ApprovedJobsRequest{}
 
-	// err := godotenv.Load()
-  // if err != nil {
-  //   log.Fatal("Error loading .env file")
-  // }
-
 	id := ctx.Query("id")
 	authorization := ctx.GetHeader("authorization")
-	// secretKey := os.Getenv("SECRET_KEY")
+	secretKey := os.Getenv("SECRET_KEY")
 
-	if authorization != "123456789" {
+	if authorization != secretKey {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("authorization", "GetHeader").Error())
 		return
 	}
