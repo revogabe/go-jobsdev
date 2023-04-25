@@ -30,7 +30,7 @@ type ErrorResponse struct {
 	ErrorCode string `json:"errorCode"`
 }
 
-type CreateOpeningResponse struct {
+type CreateJobsResponse struct {
 	Message string `json:"message"`
 	Data schemas.JobsResponse `json:"data"`	
 }

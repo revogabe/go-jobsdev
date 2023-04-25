@@ -19,6 +19,7 @@ type Jobs struct {
 	Experience string
 	Salary string
 	Link string
+	Approved bool
 }
 
 type JobsResponse struct {
@@ -38,4 +39,5 @@ type JobsResponse struct {
 	Experience string `json:"experience"`
 	Salary string `json:"salary"`
 	Link string `json:"link"`
+	Approved bool `json:"approved"`
 }

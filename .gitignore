@@ -2,6 +2,7 @@
 *.dll
 *.so
 *.dylib
+*.env
 
 # Test Binary 
 *.teste

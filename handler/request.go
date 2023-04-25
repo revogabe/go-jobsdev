@@ -17,6 +17,7 @@ type CreateJobsRequest struct {
 	Link string `json:"link"`
 	Experience string `json:"experience"`
 	Salary string `json:"salary"`
+	Approved bool `json:"approved"`
 }
 
 func (r *CreateJobsRequest) Validate() error {
@@ -44,5 +45,12 @@ func (r *CreateJobsRequest) Validate() error {
 	if r.Salary == "" {
 		return errParamIsRequired("salary", "string")
 	}
+	if r.Approved {
+		return errParamIsRequired("approved", "bool")
+	}
 	return nil
+}
+
+type ApprovedJobsRequest struct {
+	Approved bool `json:"approved"`
 }
