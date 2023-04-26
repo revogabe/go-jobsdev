@@ -14,7 +14,7 @@ func initializeRoutes(router *gin.Engine) {
 		v1.GET("/jobs", handler.ShowJobsHandler)
 		v1.POST("/create", handler.CreateJobsHandler)
 		v1.PUT("/approved", handler.ApprovedJobsHandler)
-		v1.DELETE("/delete", handler.DeleteJobsHandler)
+		v1.OPTIONS("/delete", handler.DeleteJobsHandler)
 		v1.GET("/jobsall", handler.ListJobsHandler)
 	}
 }
