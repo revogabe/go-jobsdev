@@ -117,4 +117,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Credits
 
-This project was created by [arthur404dev](https://github.com/arthur404dev).
+This project was created by [Daniel Gabrie](https://github.com/revogabe).
