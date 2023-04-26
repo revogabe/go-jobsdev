@@ -9,7 +9,7 @@ func initializeRoutes(router *gin.Engine) {
 	// Initialize handler
 	handler.InitializeHandler()
 	basePath := "/api/v1"
-	v1 := router.Group(basePath) 
+	v1 := router.Group(basePath)
 	{
 		v1.GET("/jobs", handler.ShowJobsHandler)
 		v1.POST("/create", handler.CreateJobsHandler)

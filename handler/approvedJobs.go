@@ -6,6 +6,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/revogabe/go-jobsdev/schemas"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func ApprovedJobsHandler(ctx *gin.Context) {
@@ -14,6 +17,7 @@ func ApprovedJobsHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
 	authorization := ctx.GetHeader("authorization")
 	secretKey := os.Getenv("SECRET_KEY")
+	objectId, err := primitive.ObjectIDFromHex(id)
 
 	if authorization != secretKey {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("authorization", "GetHeader").Error())
@@ -24,25 +28,38 @@ func ApprovedJobsHandler(ctx *gin.Context) {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
-	jobs := schemas.Jobs{}
 
-	if err := db.First(&jobs, id).Error; err != nil {
-		sendError(ctx, http.StatusNotFound, "opening not found")
+	if err != nil {
+		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
-	// Update opening
+
+	filter := bson.M{"_id": objectId}
+	update := bson.M{"$set": bson.M{"approved": true}}
+
+	var jobs schemas.Jobs
+
+	if err := db.Collection("jobs").FindOneAndUpdate(ctx, filter, update).Decode(&jobs); err != nil {
+		if err == mongo.ErrNoDocuments {
+			sendError(ctx, http.StatusNotFound, "Job not found")
+			return
+		}
+		logger.Errorf("Error updating job: %v", err.Error())
+		sendError(ctx, http.StatusInternalServerError, "Error updating job")
+		return
+	}
+
 	if !request.Approved {
 		jobs.Approved = true
-	}
-	if request.Approved {
+	} else {
 		jobs.Approved = false
 	}
 
-	// Save opening
-	if err := db.Save(&jobs).Error; err != nil {
-		logger.Errorf("error updating opening: %v", err.Error())
-		sendError(ctx, http.StatusInternalServerError, "error updating opening")
+	if _, err := db.Collection("jobs").ReplaceOne(ctx, filter, jobs); err != nil {
+		logger.Errorf("Error replacing job: %v", err.Error())
+		sendError(ctx, http.StatusInternalServerError, "Error updating job")
 		return
 	}
+
 	sendSuccess(ctx, "approved-jobs", jobs)
 }

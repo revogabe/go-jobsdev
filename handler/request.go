@@ -8,16 +8,16 @@ func errParamIsRequired(name, typ string) error {
 
 // CreateJobs
 type CreateJobsRequest struct {
-	Title string `json:"title"`
+	Title       string `json:"title"`
 	Description string `json:"description"`
-	Role string `json:"role"`
-	Company string `json:"company"`
-	Location string `json:"location"`
-	Remote bool `json:"remote"`
-	Link string `json:"link"`
-	Experience string `json:"experience"`
-	Salary string `json:"salary"`
-	Approved bool `json:"approved"`
+	Role        string `json:"role"`
+	Company     string `json:"company"`
+	Location    string `json:"location"`
+	Remote      bool   `json:"remote"`
+	Link        string `json:"link"`
+	Experience  string `json:"experience"`
+	Salary      string `json:"salary"`
+	Approved    bool   `json:"approved"`
 }
 
 func (r *CreateJobsRequest) Validate() error {
