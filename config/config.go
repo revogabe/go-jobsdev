@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 
-	"github.com/gin-contrib/cors"
 	"gorm.io/gorm"
 )
 
@@ -14,9 +13,6 @@ var (
 
 func Init() error {
 	var err error
-
-	config := cors.DefaultConfig()
-  config.AllowOrigins = []string{"*"}
 
 	// Initialize SQLite
 	db, err = InitializeSQLite()
