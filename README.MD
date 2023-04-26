@@ -117,4 +117,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Credits
 
-This project was created by [Daniel Gabrie](https://github.com/revogabe).
+This project was created by [Daniel Gabriel](https://github.com/revogabe).
