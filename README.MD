@@ -8,7 +8,7 @@
 
 This project is an API in Golang and Frontend in Next.js with the intention of studying more about Go and also helping the community with the job search in the market.
 
-I used in this project techs like: Go-Gin as a router, GoORM for database communication, SQLite as a database. The project follows a modern package structure to keep the code base organized and maintainable. I also created an authenticated area so that I can approve or delete jobs posted by users.
+I used in this project techs like: Go-Gin as a router, GoORM for database communication, MySQL as a database. The project follows a modern package structure to keep the code base organized and maintainable. I also created an authenticated area so that I can approve or delete jobs posted by users.
 
 ## Preview
 
@@ -97,7 +97,7 @@ This project uses the following tools:
 - [Golang](https://golang.org/) for backend development
 - [Go-Gin](https://github.com/gin-gonic/gin) for route management
 - [GoORM](https://gorm.io/) for database communication
-- [SQLite](https://www.sqlite.org/index.html) as the database
+- [MySQL](https://www.mysql.com/) as the database
 
 ## Contributing
 
