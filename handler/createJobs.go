@@ -23,18 +23,7 @@ func CreateJobsHandler(ctx *gin.Context) {
 		return
 	}
 
-	jobs := schemas.Jobs{
-		Title:       request.Title,
-		Description: request.Description,
-		Role:        request.Role,
-		Company:     request.Company,
-		Location:    request.Location,
-		Remote:      request.Remote,
-		Link:        request.Link,
-		Experience:  request.Experience,
-		Salary:      request.Salary,
-		Approved:    false,
-	}
+	var jobs schemas.Jobs
 
 	if _, err := db.Collection("jobs").InsertOne(context.Background(), jobs); err != nil {
 		logger.Errorf("Error creating jobs: %v", err.Error())

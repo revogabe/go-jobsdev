@@ -36,7 +36,7 @@ func DeleteJobsHandler(ctx *gin.Context) {
 	filter := bson.M{"_id": objectId}
 	var jobs schemas.Jobs
 
-	db.Collection("jobs").FindOne(context.Background(), filter).Decode(&jobs)
+	err = db.Collection("jobs").FindOne(context.Background(), filter).Decode(&jobs)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			sendError(ctx, http.StatusNotFound, fmt.Sprintf("Jobs with id %s not found", id))
