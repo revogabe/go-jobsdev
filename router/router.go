@@ -16,7 +16,7 @@ func Initialize() {
   router.Use(cors.New(cors.Config{
     AllowOrigins:     []string{"*"},
     AllowMethods:     []string{"PUT", "DELETE"},
-    AllowHeaders:     []string{"Origin"},
+    AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "authorization"},
     ExposeHeaders:    []string{"Content-Length"},
     AllowCredentials: true,
     AllowOriginFunc: func(origin string) bool {
