@@ -34,6 +34,9 @@ func ApprovedJobsHandler(ctx *gin.Context) {
 	if !request.Approved {
 		jobs.Approved = true
 	}
+	if request.Approved {
+		jobs.Approved = false
+	}
 
 	// Save opening
 	if err := db.Save(&jobs).Error; err != nil {
