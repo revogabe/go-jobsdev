@@ -12,7 +12,7 @@ var (
 
 func InitializeHandler() {
 	logger = config.GetLogger("handler")
-	db = config.GetSQLite()
+	db = config.GetMySQL()
 }
 
 

@@ -14,8 +14,8 @@ var (
 func Init() error {
 	var err error
 
-	// Initialize SQLite
-	db, err = InitializeSQLite()
+	// Initialize MySQL
+	db, err = InitializeMySQL()
 
 	if err != nil {
 		return fmt.Errorf("failed to initialize SQLite: %v", err)
@@ -24,7 +24,7 @@ func Init() error {
 	return nil
 }
 
-func GetSQLite() *gorm.DB {
+func GetMySQL() *gorm.DB {
 	return db
 }
 
