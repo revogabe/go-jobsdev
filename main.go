@@ -14,13 +14,13 @@ func main() {
 	logger = *config.GetLogger("main")
 
 	// Initialize godotenv
-	godotenv.Load() 
+	godotenv.Load()
 
 	// Initialize Configs
 	err := config.Init()
 	if err != nil {
 		logger.Errorf("Error initializing configs: %v", err)
-		return 
+		return
 	}
 
 	// Initialize the routes

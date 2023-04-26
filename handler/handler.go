@@ -2,22 +2,15 @@ package handler
 
 import (
 	"github.com/revogabe/go-jobsdev/config"
-	"gorm.io/gorm"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 var (
 	logger *config.Logger
-	db 	 	*gorm.DB
+	db     *mongo.Database
 )
 
 func InitializeHandler() {
 	logger = config.GetLogger("handler")
-	db = config.GetSQLite()
+	db = config.GetMongoDB()
 }
-
-
-
-
-
-
-

@@ -8,7 +8,7 @@
 
 This project is an API in Golang and Frontend in Next.js with the intention of studying more about Go and also helping the community with the job search in the market.
 
-I used in this project techs like: Go-Gin as a router, GoORM for database communication, SQLite as a database. The project follows a modern package structure to keep the code base organized and maintainable. I also created an authenticated area so that I can approve or delete jobs posted by users.
+I used in this project techs like: Go-Gin as a router, GoORM for database communication, MongoDB Atlas as a database. The project follows a modern package structure to keep the code base organized and maintainable. I also created an authenticated area so that I can approve or delete jobs posted by users.
 
 ## Preview
 
@@ -31,8 +31,8 @@ I used in this project techs like: Go-Gin as a router, GoORM for database commun
 - Introduction to Golang and building modern APIs
 - Development environment setup for creating the API
 - Using Go-Gin as a router for route management
-- Implementing SQLite as the database for the API
-- Using GoORM for communication with the database
+- Implementing MongoDB as the database for the API
+- Using MongoDB Go Driver for communication with the database
 - Creating a modern package structure for organizing the project
 - Implementing a complete job opportunities API with endpoints for searching, creating, editing, and deleting opportunities
 - Implementing automated tests to ensure API quality
@@ -96,8 +96,8 @@ This project uses the following tools:
 
 - [Golang](https://golang.org/) for backend development
 - [Go-Gin](https://github.com/gin-gonic/gin) for route management
-- [GoORM](https://gorm.io/) for database communication
-- [SQLite](https://www.sqlite.org/index.html) as the database
+- [MongoDB Go Driver](https://github.com/mongodb/mongo-go-driver) for database communication
+- [MongoDB Atlas](https://www.mongodb.com/atlas/database) as the database
 
 ## Contributing
 
