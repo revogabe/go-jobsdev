@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/revogabe/go-jobsdev/schemas"
@@ -15,16 +14,10 @@ import (
 
 func DeleteJobsHandler(ctx *gin.Context) {
 	id := ctx.Query("id")
-	authorization := ctx.GetHeader("authorization")
-	secretKey := os.Getenv("SECRET_KEY")
 	objectId, err := primitive.ObjectIDFromHex(id)
 
 	if err != nil {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
-		return
-	}
-	if authorization != secretKey {
-		sendError(ctx, http.StatusBadRequest, errParamIsRequired("authorization", "GetHeader").Error())
 		return
 	}
 

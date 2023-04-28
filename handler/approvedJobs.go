@@ -2,7 +2,6 @@ package handler
 
 import (
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/revogabe/go-jobsdev/schemas"
@@ -15,14 +14,7 @@ func ApprovedJobsHandler(ctx *gin.Context) {
 	request := ApprovedJobsRequest{}
 
 	id := ctx.Query("id")
-	authorization := ctx.GetHeader("authorization")
-	secretKey := os.Getenv("SECRET_KEY")
 	objectId, err := primitive.ObjectIDFromHex(id)
-
-	if authorization != secretKey {
-		sendError(ctx, http.StatusBadRequest, errParamIsRequired("authorization", "GetHeader").Error())
-		return
-	}
 
 	if id == "" {
 		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
