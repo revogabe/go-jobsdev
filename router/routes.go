@@ -23,5 +23,6 @@ func initializeRoutes(router *gin.Engine) {
 		v1.POST("/login", handler.LoginHandler)
 		authRoute.PUT("/approved", handler.ApprovedJobsHandler)
 		authRoute.DELETE("/delete", handler.DeleteJobsHandler)
+		authRoute.GET("/validate", handler.UserCheckHandler)
 	}
 }
